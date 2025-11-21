@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamlit公网访问测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f77b4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+        .access-urls {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .url-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 3px;
+            border: 1px solid #dee2e6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1f77b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #155724;
+        }
+        .config-steps {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 3px;
+            border-left: 3px solid #1f77b4;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Streamlit公网访问配置测试</h1>
+        
+        <div class="status success">
+            <strong>✅ Streamlit应用状态：</strong>正在运行
+        </div>
+        
+        <div class="status success">
+            <strong>✅ 端口监听：</strong>8501端口正常监听
+        </div>
+        
+        <div class="status success">
+            <strong>✅ 本地访问：</strong>http://127.0.0.1:8501 - 正常
+        </div>
+        
+        <div class="status success">
+            <strong>✅ 局域网访问：</strong>http://192.168.3.167:8501 - 正常
+        </div>
+        
+        <div class="status warning">
+            <strong>⚠️ 防火墙配置：</strong>需要管理员权限配置
+        </div>
+        
+        <div class="status info">
+            <strong>ℹ️ 公网访问：</strong>需要路由器端口转发配置
+        </div>
+
+        <div class="access-urls">
+            <h3>🔗 访问地址</h3>
+            <div class="url-item">
+                <strong>本地访问：</strong>
+                <a href="http://localhost:8501" target="_blank" class="btn">点击访问</a>
+                <code>http://localhost:8501</code>
+            </div>
+            <div class="url-item">
+                <strong>局域网访问：</strong>
+                <a href="http://192.168.3.167:8501" target="_blank" class="btn">点击访问</a>
+                <code>http://192.168.3.167:8501</code>
+            </div>
+            <div class="url-item">
+                <strong>公网访问：</strong>
+                <span class="btn" style="background-color: #6c757d;">需要配置</span>
+                <code>http://YOUR_PUBLIC_IP:8501</code>
+            </div>
+        </div>
+
+        <div class="config-steps">
+            <h3>🔧 公网访问配置步骤</h3>
+            
+            <div class="step">
+                <h4>步骤1：配置防火墙（必需）</h4>
+                <p>以管理员身份运行命令提示符，执行：</p>
+                <code>netsh advfirewall firewall add rule name="Streamlit-8501" dir=in action=allow protocol=TCP localport=8501</code>
+                <p>或运行：<code>setup_firewall.bat</code></p>
+            </div>
+            
+            <div class="step">
+                <h4>步骤2：配置路由器端口转发（公网访问）</h4>
+                <p>登录路由器管理界面，添加端口转发规则：</p>
+                <ul>
+                    <li>外部端口：8501</li>
+                    <li>内部IP：192.168.3.167</li>
+                    <li>内部端口：8501</li>
+                    <li>协议：TCP</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <h4>步骤3：启动应用</h4>
+                <code>python start_public.py</code>
+            </div>
+        </div>
+
+        <div class="status info">
+            <h4>📋 配置文件位置</h4>
+            <p>Streamlit配置：<code>C:\Users\wolf2\.streamlit\config.toml</code></p>
+            <p>启动脚本：<code>start_public.py</code></p>
+            <p>防火墙脚本：<code>setup_firewall.bat</code></p>
+        </div>
+
+        <div class="status warning">
+            <h4>⚠️ 安全提醒</h4>
+            <ul>
+                <li>生产环境建议使用HTTPS加密</li>
+                <li>添加身份验证机制</li>
+                <li>定期更新依赖包</li>
+                <li>监控访问日志</li>
+                <li>限制访问IP范围</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <p><strong>广告置换库存管理系统</strong></p>
+            <p>配置时间：<span id="timestamp"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // 更新时间戳
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('zh-CN');
+        
+        // 自动测试访问
+        function testAccess() {
+            const urls = [
+                'http://localhost:8501',
+                'http://192.168.3.167:8501'
+            ];
+            
+            urls.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => {
+                        console.log(`✅ ${url} 可访问`);
+                    })
+                    .catch(err => {
+                        console.log(`❌ ${url} 无法访问:`, err);
+                    });
+            });
+        }
+        
+        // 页面加载完成后测试
+        window.addEventListener('load', testAccess);
+    </script>
+</body>
+</html>

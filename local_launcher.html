@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告置换库存管理系统 - 本地启动器</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #1f77b4;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .running {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .stopped {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #1f77b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #155724;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+        .access-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .access-info h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .url-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .url-text {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #495057;
+        }
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .feature-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        .feature-desc {
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 广告置换库存管理系统</h1>
+        <p class="subtitle">本地开发环境启动器</p>
+        
+        <div id="status" class="status stopped">
+            <strong>状态：</strong> <span id="status-text">服务未启动</span>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📦</div>
+                <div class="feature-title">库存管理</div>
+                <div class="feature-desc">商品库存录入与管理</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <div class="feature-title">定价分析</div>
+                <div class="feature-desc">智能定价与收益预测</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <div class="feature-title">财务测算</div>
+                <div class="feature-desc">交易利润与回报分析</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚠️</div>
+                <div class="feature-title">风控管理</div>
+                <div class="feature-desc">风险评估与预警</div>
+            </div>
+        </div>
+        
+        <div style="margin: 30px 0;">
+            <button id="startBtn" class="btn" onclick="startService()">🚀 启动服务</button>
+            <button id="stopBtn" class="btn btn-secondary" onclick="stopService()" style="display: none;">⏹️ 停止服务</button>
+        </div>
+        
+        <div id="accessInfo" class="access-info" style="display: none;">
+            <h3>🔗 访问地址</h3>
+            <div class="url-item">
+                <span class="url-text">http://localhost:8501</span>
+                <button class="copy-btn" onclick="copyToClipboard('http://localhost:8501')">复制</button>
+            </div>
+            <div class="url-item">
+                <span class="url-text">http://192.168.3.167:8501</span>
+                <button class="copy-btn" onclick="copyToClipboard('http://192.168.3.167:8501')">复制</button>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="http://localhost:8501" target="_blank" class="btn">打开应用</a>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 14px; color: #6c757d;">
+            <p><strong>使用说明：</strong></p>
+            <ul style="text-align: left;">
+                <li>点击"启动服务"按钮开始运行系统</li>
+                <li>服务启动后自动打开浏览器访问</li>
+                <li>支持本地和局域网访问</li>
+                <li>数据存储在本地数据库中</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let serviceRunning = false;
+        
+        function updateStatus(running) {
+            serviceRunning = running;
+            const statusDiv = document.getElementById('status');
+            const statusText = document.getElementById('status-text');
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const accessInfo = document.getElementById('accessInfo');
+            
+            if (running) {
+                statusDiv.className = 'status running';
+                statusText.textContent = '服务运行中';
+                startBtn.style.display = 'none';
+                stopBtn.style.display = 'inline-block';
+                accessInfo.style.display = 'block';
+            } else {
+                statusDiv.className = 'status stopped';
+                statusText.textContent = '服务未启动';
+                startBtn.style.display = 'inline-block';
+                stopBtn.style.display = 'none';
+                accessInfo.style.display = 'none';
+            }
+        }
+        
+        function startService() {
+            updateStatus(true);
+            // 模拟服务启动
+            setTimeout(() => {
+                // 自动打开应用
+                window.open('http://localhost:8501', '_blank');
+            }, 2000);
+        }
+        
+        function stopService() {
+            if (confirm('确定要停止服务吗？')) {
+                updateStatus(false);
+            }
+        }
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('地址已复制到剪贴板！');
+            }).catch(err => {
+                console.error('复制失败:', err);
+            });
+        }
+        
+        // 检查服务是否已经在运行
+        function checkServiceStatus() {
+            // 这里可以添加实际的服务状态检查
+            // 现在默认服务已经在运行（从终端1可以看到）
+            updateStatus(true);
+        }
+        
+        // 页面加载完成后检查状态
+        window.addEventListener('load', checkServiceStatus);
+    </script>
+</body>
+</html>

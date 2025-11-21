@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告置换库存管理系统 - 测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f77b4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .link-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1f77b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 5px;
+            transition: background-color 0.3s;
+        }
+        .link-button:hover {
+            background-color: #155724;
+        }
+        .features {
+            margin-top: 30px;
+        }
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f8f9fa;
+            border-left: 4px solid #1f77b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 广告置换库存管理系统</h1>
+        
+        <div class="status success">
+            <h2>✅ 系统状态：正常运行</h2>
+            <p>应用程序已成功启动并正在运行</p>
+        </div>
+        
+        <div class="status info">
+            <h3>🔗 访问应用程序</h3>
+            <p>点击下面的链接访问完整的库存管理系统：</p>
+            <a href="http://localhost:8503" class="link-button" target="_blank">打开主应用</a>
+            <a href="http://localhost:8502" class="link-button" target="_blank">打开简化版</a>
+        </div>
+        
+        <div class="features">
+            <h3>🚀 主要功能</h3>
+            <ul>
+                <li>📦 <strong>库存管理</strong> - 添加、修改、删除库存商品</li>
+                <li>🏢 <strong>品牌管理</strong> - 管理合作品牌信息</li>
+                <li>📺 <strong>媒体管理</strong> - 管理广告媒体资源</li>
+                <li>🛒 <strong>渠道管理</strong> - 管理销售渠道</li>
+                <li>💰 <strong>定价分析</strong> - 商品定价和变现分析</li>
+                <li>📈 <strong>财务测算</strong> - 利润预测和财务报告</li>
+                <li>⚠️ <strong>风控检查</strong> - 风险管理和合规检查</li>
+                <li>📊 <strong>数据报表</strong> - 数据导出和报表生成</li>
+            </ul>
+        </div>
+        
+        <div class="status info">
+            <h3>📋 使用说明</h3>
+            <p><strong>修复版本（端口8503）</strong>：包含完整的删除和修改功能，使用会话状态管理操作</p>
+            <p><strong>简化版本（端口8502）</strong>：基础功能，适合快速测试和简单操作</p>
+        </div>
+    </div>
+</body>
+</html>

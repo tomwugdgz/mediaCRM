@@ -1,0 +1,23 @@
+{
+  "network_info": {
+    "hostname": "Karen",
+    "local_ip": "192.168.3.167",
+    "public_ip": "无法获取",
+    "system": "Windows",
+    "platform": "Windows-10-10.0.26100-SP0"
+  },
+  "port_test": {
+    "localhost": true,
+    "local_network": true,
+    "local_ip": "192.168.3.167"
+  },
+  "firewall_status": {
+    "error": "list index out of range"
+  },
+  "access_urls": {
+    "localhost": "http://127.0.0.1:8501",
+    "local_network": "http://192.168.3.167:8501",
+    "public": "http://无法获取:8501"
+  },
+  "timestamp": "2025-11-21T07:51:40.761961"
+}
